@@ -1,0 +1,16 @@
+<h1><a href="{% url 'board:mainview' %}">홈</a></h1>
+<h1>{{ post.title }}</h1>
+<p>{{ post.text }}</p>
+<p>{{ post.mod_date}}</p>
+
+<p>
+    <a href="{% url 'board:deletepost' post.id %}">삭제</a>
+    <a href="{% url 'board:updatepost' post.id %}">수정</a>
+</p>
+
+<h3> 댓글 </h3>
+<ul>
+    {% for comment in post.comment_set.all %}
+        <li>{{ comment.comment_text }}</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,10 @@
+<form action="" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="title">제목</label>
+        {{ form.title }}
+    </p>
+    <p><label for="text">내용</label></p>
+    {{ form.text }}
+    <p><input type = "submit"></p>
+</form>
