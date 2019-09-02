@@ -9,8 +9,18 @@
 </p>
 
 <h3> 댓글 </h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.text }}
+        <input type = "submit">
+    </form>
 <ul>
-    {% for comment in post.comment_set.all %}
-        <li>{{ comment.comment_text }}</li>
+    {% for comment in comments %}
+        <li>{{ comment.text }}</li>
+        <form action="{% url 'board:deletecomment' post.id comment.id %}" method="POST">
+            {% csrf_token %}
+            <input type = "submit" value = "삭제">
+        </form>
+        <input type = "submit" value = "수정" onClick="location.href='{% url 'board:updatecomment' post.id comment.id %}'">
     {% endfor %}
 </ul>
